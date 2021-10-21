@@ -25,8 +25,8 @@ public class OPAskBan extends JavaPlugin implements Listener {
         config.addDefault("Separate the values by", ",");
         config.addDefault("opInquiry", "can i have op?");
         config.addDefault("banTime", 3600000);
-        config.addDefault("banMessage", "Be patient. You have been banned for ");
-        config.addDefault("kickMessage", "Don't beg. You have been banned for ");
+        config.addDefault("banMessage", "Be patient. You have been banned for one hour.");
+        config.addDefault("kickMessage", "Don't beg. You have been banned for one hour.");
         config.options().copyDefaults(true);
         saveConfig();
 
