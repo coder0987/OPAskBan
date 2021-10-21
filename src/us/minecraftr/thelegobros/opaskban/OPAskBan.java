@@ -92,9 +92,9 @@ public class OPAskBan extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         if (config.getBoolean("announcePlugin")) {
-            player.sendMessage("Running OPAskBan v0.0.1");
+            player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
         } else if (config.getString("announcePlugin").equalsIgnoreCase("op") && player.isOp()) {
-            player.sendMessage("Running OPAskBan v0.0.1");
+            player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
         }
         if (updateAvailable && player.isOp()) {
             player.sendMessage("[OPAskBan]: A new version of OPAskBan is available. Download it from: https://www.spigotmc.org/resources/opaskban.96976/");
