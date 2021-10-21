@@ -6,7 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="Fixes a few possible null-pointer exceptions and other small optimizations" />
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634788365172</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Corrects the version number to reflect the current version v0.1.2">
+      <created>1634788821771</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634788821771</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Corrects the version number to reflect the current version v0.1.2">
+      <created>1634788829981</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634788829981</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +113,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ban and Kick default messages were left open-ended.&#10;This has been ammended to reflect the default ban time" />
@@ -103,6 +122,7 @@
     <MESSAGE value="Updates player message to automatically adjust based on version" />
     <MESSAGE value="Fixes a few possible null-pointer exceptions" />
     <MESSAGE value="Fixes a few possible null-pointer exceptions and other small optimizations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes a few possible null-pointer exceptions and other small optimizations" />
+    <MESSAGE value="Corrects the version number to reflect the current version v0.1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrects the version number to reflect the current version v0.1.2" />
   </component>
 </project>

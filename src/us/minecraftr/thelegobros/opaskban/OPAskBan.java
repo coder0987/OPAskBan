@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -49,8 +50,8 @@ public class OPAskBan extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void onChat(PlayerChatEvent event){
-        Player player =  event.getPlayer();
+    public void onChat(AsyncPlayerChatEvent event){
+        final Player player =  event.getPlayer();
         String banMessages = config.getString("opInquiry");
         if (banMessages == null) {
             banMessages = "can i have op?";
@@ -82,7 +83,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
             Bukkit.getBanList(BanList.Type.NAME).addBan(player.getName(),
                             config.getString("banMessage")
                     ,new Date(System.currentTimeMillis()+config.getInt("banTime")),null);
-            player.kickPlayer(config.getString("kickMessage"));
+            Bukkit.getScheduler().runTask(this, () -> player.kickPlayer(config.getString("kickMessage")));
         } else if (player.isOp() && isAskingForOp){
             player.sendMessage("Why are you asking for OP???");
         }
