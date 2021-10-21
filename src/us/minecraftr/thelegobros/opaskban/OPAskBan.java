@@ -32,15 +32,17 @@ public class OPAskBan extends JavaPlugin implements Listener {
 
         // Enable our class to check for new players using onPlayerJoin()
         getServer().getPluginManager().registerEvents(this, this);
-        this.getCommand("status").setExecutor(new Status());
+        this.getCommand("status").setExecutor(new Status(this));
 
         //Checks online for updates
         new UpdateChecker(this, 96976).getVersion(version -> {
-            if (this.getDescription().getVersion().equals(version)) {
-                getLogger().info("There is not a new update available.");
+            if (!this.getDescription().getVersion().equals(version)) {
+                getLogger().info("There is a new update available.");
+                getLogger().info("Current version: " + this.getDescription().getVersion());
+                getLogger().info("Latest available version: " + version);
                 updateAvailable = true;
             } else {
-                getLogger().info("There is a new update available.");
+                getLogger().info("You are running the latest version.");
             }
         });
     }
@@ -75,12 +77,12 @@ public class OPAskBan extends JavaPlugin implements Listener {
             }
         }
 
-        if(isAskingForOp && player != null && !player.isOp()){
+        if(isAskingForOp && !player.isOp()){
             Bukkit.getBanList(BanList.Type.NAME).addBan(player.getName(),
                             config.getString("banMessage")
                     ,new Date(System.currentTimeMillis()+config.getInt("banTime")),null);
             player.kickPlayer(config.getString("kickMessage"));
-        } else if (player.isOp() && isAskingForOp && player != null){
+        } else if (player.isOp() && isAskingForOp){
             player.sendMessage("Why are you asking for OP???");
         }
     }
