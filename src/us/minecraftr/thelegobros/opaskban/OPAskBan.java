@@ -13,6 +13,7 @@ import org.bukkit.BanList;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 
 public class OPAskBan extends JavaPlugin implements Listener {
     FileConfiguration config = getConfig();
@@ -32,7 +33,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
 
         // Enable our class to check for new players using onPlayerJoin()
         getServer().getPluginManager().registerEvents(this, this);
-        this.getCommand("status").setExecutor(new Status(this));
+        Objects.requireNonNull(this.getCommand("status")).setExecutor(new Status(this));
 
         //Checks online for updates
         new UpdateChecker(this, 96976).getVersion(version -> {
@@ -54,9 +55,9 @@ public class OPAskBan extends JavaPlugin implements Listener {
         if (banMessages == null) {
             banMessages = "can i have op?";
         }
-        char divider = config.get("Separate the values by").toString().charAt(0);
+        char divider = Objects.requireNonNull(config.get("Separate the values by")).toString().charAt(0);
         String[] opAsk = new String[StringUtils.countMatches(banMessages, String.valueOf(divider)) + 1];
-        int splitPoint = -1;
+        int splitPoint;
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
         for (int i = 0; i < commaCount + 2; i++) {
             splitPoint = banMessages.indexOf(divider);
@@ -70,8 +71,8 @@ public class OPAskBan extends JavaPlugin implements Listener {
         }
 
         boolean isAskingForOp = false;
-        for (var i = 0; i < opAsk.length; i++) {
-            if (event.getMessage().equalsIgnoreCase(opAsk[i])) {
+        for (String s : opAsk) {
+            if (event.getMessage().equalsIgnoreCase(s)) {
                 isAskingForOp = true;
                 break;
             }
@@ -93,7 +94,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         if (config.getBoolean("announcePlugin")) {
             player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
-        } else if (config.getString("announcePlugin").equalsIgnoreCase("op") && player.isOp()) {
+        } else if (Objects.requireNonNull(config.getString("announcePlugin")).equalsIgnoreCase("op") && player.isOp()) {
             player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
         }
         if (updateAvailable && player.isOp()) {

@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="Corrects the version number in plugin.yml to reflect the release v0.1.0">
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="Fixes a few possible null-pointer exceptions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" afterDir="false" />
     </list>
@@ -66,7 +65,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634783835494</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adds several Update checker features">
+      <created>1634787582513</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634787582513</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updates player message to automatically adjust based on version">
+      <created>1634787689547</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634787689547</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -83,6 +96,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ban and Kick default messages were left open-ended.&#10;This has been ammended to reflect the default ban time" />
     <MESSAGE value="Corrects the version number in plugin.yml to reflect the release v0.1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrects the version number in plugin.yml to reflect the release v0.1.0" />
+    <MESSAGE value="Adds several Update checker features" />
+    <MESSAGE value="Updates player message to automatically adjust based on version" />
+    <MESSAGE value="Fixes a few possible null-pointer exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes a few possible null-pointer exceptions" />
   </component>
 </project>

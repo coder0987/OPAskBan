@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nonnull;
+
 public class Status implements CommandExecutor {
 
     private static JavaPlugin plugin;
@@ -17,11 +19,10 @@ public class Status implements CommandExecutor {
 
     // This method is called, when somebody uses our command
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command cmd, @Nonnull String label, @Nonnull String[] args) {
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            // Here we need to give items to our player
+        if (sender instanceof Player player) {
+            //This is where the plugin sends a message to the player
             player.sendMessage( "The plugin is working" );
             new UpdateChecker(plugin, 96976).getVersion(version -> {
                 if (!plugin.getDescription().getVersion().equals(version)) {
