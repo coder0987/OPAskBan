@@ -25,7 +25,7 @@ public class Status implements CommandExecutor {
             //This is where the plugin sends a message to the player
             player.sendMessage( "The plugin is working" );
             new UpdateChecker(plugin, 96976).getVersion(version -> {
-                if (!plugin.getDescription().getVersion().equals(version)) {
+                if (plugin.getDescription().getVersion().compareToIgnoreCase(version) < 0) {
                     player.sendMessage("You are not running the latest release of this plugin :/");
                     player.sendMessage("Current version: " + plugin.getDescription().getVersion());
                     player.sendMessage("Latest available version: " + version);
