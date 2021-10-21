@@ -1,0 +1,22 @@
+name: OPAskBan
+version: 0.0.1
+author: TheLegoBros3
+main: us.minecraftr.thelegobros.opaskban.OPAskBan
+api-version:  1.17
+description: This plugin bans any player who asks for OP
+prefix: OPAskBan
+permissions:
+  OPAsk.*:
+    description: Wildcard permssion
+    default: op
+    children:
+      OPAsk.op: true
+  OPAsk.op:
+      default: op
+      description: Can use all functionalities of the plugin
+commands:
+  status:
+    description: Status of plugin
+    permission: OPAsk.op
+    permission-message: That's not allowed.
+    usage: /<command>
