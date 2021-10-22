@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/../CompiledPlugins</output-path>
     <root id="archive" name="OPAskBan.jar">
       <element id="module-output" name="OPAskBan" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../BuildTools/spigot-1.17.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
