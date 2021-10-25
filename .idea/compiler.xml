@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="OPAskBan" target="" />
+      <module name="OPAskBan" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

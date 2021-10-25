@@ -36,7 +36,10 @@ public class OPAskBan extends JavaPlugin implements Listener {
 
         // Enable our class to check for new players using onPlayerJoin()
         getServer().getPluginManager().registerEvents(this, this);
+
+        //Enable commands
         Objects.requireNonNull(this.getCommand("status")).setExecutor(new Status(this));
+        Objects.requireNonNull(this.getCommand("config")).setExecutor(new Config(this));
 
         //Checks online for updates
         new UpdateChecker(this, 96976).getVersion(version -> {
