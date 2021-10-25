@@ -27,7 +27,6 @@ public class Config implements CommandExecutor {
         FileConfiguration config = plugin.getConfig();
         String newMessage = config.getString("bannableMessages");
         assert newMessage != null;
-        sender.sendMessage(newMessage);                                                                                   //DEBUG
         if (args.length == 0) {
             return false;
         } else if (args[0].equals("get")){
@@ -53,8 +52,6 @@ public class Config implements CommandExecutor {
         } else {
             return false;
         }
-
-        sender.sendMessage(Arrays.toString(args));                                                                       //DEBUG
 
         // If the player (or console) uses our command correct, we can return true
         plugin.saveConfig();
