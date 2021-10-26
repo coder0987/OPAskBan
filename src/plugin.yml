@@ -1,5 +1,5 @@
 name: OPAskBan
-version: 0.3.0
+version: 0.3.1
 author: TheLegoBros3
 main: us.minecraftr.thelegobros.opaskban.OPAskBan
 api-version:  1.17
@@ -11,9 +11,13 @@ permissions:
     default: op
     children:
       OPAsk.op: true
+      OPAsk.bypass: true
   OPAsk.op:
       default: op
       description: Can use all functionalities of the plugin
+  OPAsk.bypass:
+    default: op
+    description: Won't be banned for asking for OP
 commands:
   status:
     description: Status of plugin

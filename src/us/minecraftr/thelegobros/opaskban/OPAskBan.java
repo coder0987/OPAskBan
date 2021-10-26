@@ -90,7 +90,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         }
 
         //If the message was in the array then ban the player, unless they are already OP
-        if(isAskingForOp && !player.isOp()){
+        if(isAskingForOp && !player.hasPermission("OPAsk.bypass")){
             //Bans the player
             Bukkit.getBanList(BanList.Type.NAME).addBan(player.getName(),
                             config.getString("banMessage")
@@ -109,6 +109,8 @@ public class OPAskBan extends JavaPlugin implements Listener {
         } else if (player.isOp() && isAskingForOp){
             //Asks why the OP is asking for OP
             player.sendMessage("Why are you asking for OP???");
+        } else if (player.hasPermission("OPAsk.bypass")) {
+            getLogger().info("Player has OPAsk.bypass permission. They were not banned.");
         }
     }
 
