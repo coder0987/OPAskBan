@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="v0.3.0">
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="v0.3.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/OPAskBan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/OPAskBan.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635283828834</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="v0.3.1">
+      <created>1635285212347</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1635285212347</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
