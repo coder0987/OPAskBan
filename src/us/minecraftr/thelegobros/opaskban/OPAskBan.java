@@ -109,7 +109,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         } else if (player.isOp() && isAskingForOp){
             //Asks why the OP is asking for OP
             player.sendMessage("Why are you asking for OP???");
-        } else if (player.hasPermission("OPAsk.bypass")) {
+        } else if (isAskingForOp && player.hasPermission("OPAsk.bypass")) {
             getLogger().info("Player has OPAsk.bypass permission. They were not banned.");
         }
     }
