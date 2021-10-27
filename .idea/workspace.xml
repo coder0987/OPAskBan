@@ -9,14 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="v0.3.1">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="v0.3.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Status.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635289714997</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="v0.3.2">
+      <created>1635293679399</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1635293679399</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,6 +240,7 @@
     <MESSAGE value="v0.2.0" />
     <MESSAGE value="v0.3.0" />
     <MESSAGE value="v0.3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.3.1" />
+    <MESSAGE value="v0.3.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.3.2" />
   </component>
 </project>

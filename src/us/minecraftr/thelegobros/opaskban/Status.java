@@ -1,14 +1,16 @@
 package us.minecraftr.thelegobros.opaskban;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Status implements CommandExecutor {
+public class Status implements TabExecutor {
 
     private static JavaPlugin plugin;
 
@@ -37,5 +39,10 @@ public class Status implements CommandExecutor {
 
         // If the player (or console) uses our command correct, we can return true
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String alias, @Nonnull String[] args) {
+        return new ArrayList<>();
     }
 }

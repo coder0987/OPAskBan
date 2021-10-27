@@ -1,18 +1,18 @@
 package us.minecraftr.thelegobros.opaskban;
 
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Config implements CommandExecutor {
+public class Config implements TabExecutor {
 
     private static JavaPlugin plugin;
 
@@ -79,5 +79,23 @@ public class Config implements CommandExecutor {
         // If the player (or console) uses our command correct, we can return true
         plugin.saveConfig();
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String alias, @Nonnull String[] args) {
+        if (args.length == 1){
+            List<String> options = new ArrayList<>();
+            options.add("get");
+            options.add("set");
+            options.add("add");
+            options.add("remove");
+            return options;
+        }else if (args.length == 2 && !(args[0].equals("get"))){
+            List<String> arguments = new ArrayList<>();
+            arguments.add("Message");
+            return arguments;
+        } else {
+            return new ArrayList<>();
+        }
     }
 }
