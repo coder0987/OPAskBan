@@ -1,5 +1,5 @@
 name: OPAskBan
-version: 0.3.1
+version: 0.3.2
 author: TheLegoBros3
 main: us.minecraftr.thelegobros.opaskban.OPAskBan
 api-version:  1.17
@@ -28,4 +28,4 @@ commands:
     description: updates the config
     permission: OPAsk.op
     permission-message: That's not allowed.
-    usage: "Usage: /<command> [add|overwrite|get]"
+    usage: "Usage: /<command> [add|overwrite|set|get|remove]"

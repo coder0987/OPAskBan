@@ -1,5 +1,6 @@
 package us.minecraftr.thelegobros.opaskban;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,8 +26,7 @@ public class Config implements CommandExecutor {
 
 
         FileConfiguration config = plugin.getConfig();
-        String newMessage = config.getString("bannableMessages");
-        assert newMessage != null;
+        StringBuilder newMessage = new StringBuilder(Objects.requireNonNull(config.getString("bannableMessages")));
         if (args.length == 0) {
             return false;
         } else if (args[0].equals("get")){
@@ -34,20 +34,43 @@ public class Config implements CommandExecutor {
         } else if (args.length == 1) {
             return false;
         } else if (args[0].equals("add")) {
-            newMessage += ", ";
+            if (!(String.valueOf(newMessage).equals(" ")) || !(newMessage.isEmpty()) || !(String.valueOf(newMessage).equals(""))) {
+                newMessage.append(", ");
+            }
             for (int i = 1; i < args.length; i++) {
-                newMessage += args[i] + " ";
+                newMessage.append(args[i]).append(" ");
             }
-            newMessage = newMessage.substring(0,newMessage.length() - 1);
-            config.set("bannableMessages", newMessage);
+            newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
+            config.set("bannableMessages", newMessage.toString());
             sender.sendMessage("bannableMessages set to " + newMessage);
-        } else if (args[0].equals("overwrite")) {
-            newMessage = args[1] + " ";
+        } else if (args[0].equals("overwrite")||args[0].equals("set")) {
+            newMessage = new StringBuilder(args[1] + " ");
             for (int i = 2; i < args.length; i++) {
-                newMessage += args[i] + " ";
+                newMessage.append(args[i]).append(" ");
             }
-            newMessage = newMessage.substring(0,newMessage.length() - 1);
-            config.set("bannableMessages", newMessage);
+            newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
+            config.set("bannableMessages", newMessage.toString());
+            sender.sendMessage("bannableMessages set to " + newMessage);
+        } else if (args[0].equals("remove")) {
+            String banMessages = config.getString("bannableMessages");
+            assert banMessages != null;
+            newMessage = new StringBuilder(args[1] + " ");
+            for (int i = 2; i < args.length; i++) {
+                newMessage.append(args[i]).append(" ");
+            }
+            newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
+            if (banMessages.contains(", " + newMessage)) {
+                newMessage = new StringBuilder(", " + newMessage);
+            } else if (banMessages.contains(newMessage + ", ")) {
+                newMessage.append(", ");
+            } else {
+                sender.sendMessage("The config does not contain \"" + newMessage + "\"");
+                return false;
+            }
+
+
+            newMessage = new StringBuilder(banMessages.substring(0,banMessages.indexOf(String.valueOf(newMessage))) + banMessages.substring(banMessages.indexOf(String.valueOf(newMessage)) + String.valueOf(newMessage).length()));
+            config.set("bannableMessages", newMessage.toString());
             sender.sendMessage("bannableMessages set to " + newMessage);
         } else {
             return false;
