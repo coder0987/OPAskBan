@@ -64,10 +64,9 @@ public class Config implements TabExecutor {
             } else if (banMessages.contains(newMessage + ", ")) {
                 newMessage.append(", ");
             } else {
-                sender.sendMessage("The config does not contain \"" + newMessage + "\"");
+                sender.sendMessage("The config does not contain \"" + newMessage + "\" or it is the only item in the config");
                 return false;
             }
-
 
             newMessage = new StringBuilder(banMessages.substring(0,banMessages.indexOf(String.valueOf(newMessage))) + banMessages.substring(banMessages.indexOf(String.valueOf(newMessage)) + String.valueOf(newMessage).length()));
             config.set("Bannable Messages", newMessage.toString());
