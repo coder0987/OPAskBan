@@ -68,7 +68,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         if (banMessages == null) {
             banMessages = "can i have op?";
         }
-        char divider = Objects.requireNonNull(config.get("Separate the values by")).toString().charAt(0);
+        char divider = Objects.requireNonNull(config.get("Separate The Values By")).toString().charAt(0);
         String[] opAsk = new String[StringUtils.countMatches(banMessages, String.valueOf(divider)) + 1];
         int splitPoint;
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
@@ -126,9 +126,9 @@ public class OPAskBan extends JavaPlugin implements Listener {
                 }
             }
         } else if (player.isOp() && isAskingForOp){
-            if (!(Objects.requireNonNull(config.getString("OP asked")).isEmpty()) && !(Objects.requireNonNull(config.getString("OP asked")).isBlank()) && (config.getString("OP asked") != null)) {
+            if (!(Objects.requireNonNull(config.getString("OP Asked")).isEmpty()) && !(Objects.requireNonNull(config.getString("OP Asked")).isBlank()) && (config.getString("OP Asked") != null)) {
                 //Asks why the OP is asking for OP
-                player.sendMessage(Objects.requireNonNull(config.getString("OP asked")));
+                player.sendMessage(Objects.requireNonNull(config.getString("OP Asked")));
             } else {
                 getLogger().info("[Config] \"OP asked\" is empty");
             }

@@ -26,11 +26,11 @@ public class Config implements TabExecutor {
 
 
         FileConfiguration config = plugin.getConfig();
-        StringBuilder newMessage = new StringBuilder(Objects.requireNonNull(config.getString("bannableMessages")));
+        StringBuilder newMessage = new StringBuilder(Objects.requireNonNull(config.getString("Bannable Messages")));
         if (args.length == 0) {
             return false;
         } else if (args[0].equals("get")){
-            sender.sendMessage(Objects.requireNonNull(config.getString("bannableMessages")));
+            sender.sendMessage(Objects.requireNonNull(config.getString("Bannable Messages")));
         } else if (args.length == 1) {
             return false;
         } else if (args[0].equals("add")) {
@@ -41,18 +41,18 @@ public class Config implements TabExecutor {
                 newMessage.append(args[i]).append(" ");
             }
             newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
-            config.set("bannableMessages", newMessage.toString());
-            sender.sendMessage("bannableMessages set to " + newMessage);
+            config.set("Bannable Messages", newMessage.toString());
+            sender.sendMessage("Bannable Messages set to " + newMessage);
         } else if (args[0].equals("overwrite")||args[0].equals("set")) {
             newMessage = new StringBuilder(args[1] + " ");
             for (int i = 2; i < args.length; i++) {
                 newMessage.append(args[i]).append(" ");
             }
             newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
-            config.set("bannableMessages", newMessage.toString());
-            sender.sendMessage("bannableMessages set to " + newMessage);
+            config.set("Bannable Messages", newMessage.toString());
+            sender.sendMessage("Bannable Messages set to " + newMessage);
         } else if (args[0].equals("remove")) {
-            String banMessages = config.getString("bannableMessages");
+            String banMessages = config.getString("Bannable Messages");
             assert banMessages != null;
             newMessage = new StringBuilder(args[1] + " ");
             for (int i = 2; i < args.length; i++) {
@@ -70,8 +70,8 @@ public class Config implements TabExecutor {
 
 
             newMessage = new StringBuilder(banMessages.substring(0,banMessages.indexOf(String.valueOf(newMessage))) + banMessages.substring(banMessages.indexOf(String.valueOf(newMessage)) + String.valueOf(newMessage).length()));
-            config.set("bannableMessages", newMessage.toString());
-            sender.sendMessage("bannableMessages set to " + newMessage);
+            config.set("Bannable Messages", newMessage.toString());
+            sender.sendMessage("Bannable Messages set to " + newMessage);
         } else {
             return false;
         }
