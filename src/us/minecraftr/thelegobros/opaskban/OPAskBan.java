@@ -12,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.BanList;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -25,15 +24,16 @@ public class OPAskBan extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         //These add values to the config file
-        config.addDefault("announcePlugin",true);//Whether the plugin will send a message to players on join
+        config.addDefault("Announce Plugin",true);//Whether the plugin will send a message to players on join
         config.addDefault("Ignored Characters", ""); //Sets what characters should be ignored by the plugin
         config.addDefault("Separate the values by", ",");//What char to separate the next config's messages by
-        config.addDefault("bannableMessages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
-        config.addDefault("deleteBannableMessages", false);//Whether the plugin should delete messages defined in the config above
-        config.addDefault("logDeletedMessages", true);//Whether the plugin should log deleted messages to the console
-        config.addDefault("banTime", 3600000);//How long the ban will last, in milliseconds
-        config.addDefault("banMessage", "Be patient. You have been banned for one hour.");//What message the player will be sent when attempting to rejoin the world
-        config.addDefault("kickMessage", "Don't beg. You have been banned for one hour.");//What message the player will be sent when initially ejected from the world
+        config.addDefault("Bannable Messages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
+        config.addDefault("Delete Bannable Messages", false);//Whether the plugin should delete messages defined in the config above
+        config.addDefault("Log Deleted Messages", true);//Whether the plugin should log deleted messages to the console
+        config.addDefault("OP asked", "Why are you asking for OP???");//What message should be sent to operators that send a bannableMessage
+        config.addDefault("Ban Time", 3600000);//How long the ban will last, in milliseconds
+        config.addDefault("Ban Message", "Be patient. You have been banned for one hour.");//What message the player will be sent when attempting to rejoin the world
+        config.addDefault("Kick Message", "Don't beg. You have been banned for one hour.");//What message the player will be sent when initially ejected from the world
         config.options().copyDefaults(true);
         saveConfig();
 
@@ -64,7 +64,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         //Grabs the player and initializes certain variables
         final Player player =  event.getPlayer();
         String message = event.getMessage();
-        String banMessages = config.getString("bannableMessages");
+        String banMessages = config.getString("Bannable Messages");
         if (banMessages == null) {
             banMessages = "can i have op?";
         }
@@ -112,22 +112,26 @@ public class OPAskBan extends JavaPlugin implements Listener {
         if(isAskingForOp && !player.hasPermission("OPAsk.bypass")){
             //Bans the player
             Bukkit.getBanList(BanList.Type.NAME).addBan(player.getName(),
-                            config.getString("banMessage")
-                    ,new Date(System.currentTimeMillis()+config.getInt("banTime")),null);
+                            config.getString("Ban Message")
+                    ,new Date(System.currentTimeMillis()+config.getInt("Ban Time")),null);
             //Kicks the player
-            Bukkit.getScheduler().runTask(this, () -> player.kickPlayer(config.getString("kickMessage")));
+            Bukkit.getScheduler().runTask(this, () -> player.kickPlayer(config.getString("Kick Message")));
             //Deletes the message if the config is true
-            if (config.getBoolean("deleteBannableMessages")) {
+            if (config.getBoolean("Delete Bannable Messages")) {
                 event.setCancelled(true);
                 //Logs the message to console if the config is true
-                if (config.getBoolean("logDeletedMessages")){
+                if (config.getBoolean("Log Deleted Messages")){
                     getLogger().info("Deleted message sent by " + event.getPlayer() + ":");
                     getLogger().info("\"" + event.getMessage() + "\"");
                 }
             }
         } else if (player.isOp() && isAskingForOp){
-            //Asks why the OP is asking for OP
-            player.sendMessage("Why are you asking for OP???");
+            if (!(Objects.requireNonNull(config.getString("OP asked")).isEmpty()) && !(Objects.requireNonNull(config.getString("OP asked")).isBlank()) && (config.getString("OP asked") != null)) {
+                //Asks why the OP is asking for OP
+                player.sendMessage(Objects.requireNonNull(config.getString("OP asked")));
+            } else {
+                getLogger().info("[Config] \"OP asked\" is empty");
+            }
         } else if (isAskingForOp && player.hasPermission("OPAsk.bypass")) {
             getLogger().info("Player has OPAsk.bypass permission. They were not banned.");
         }
@@ -137,9 +141,9 @@ public class OPAskBan extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         final Player player = event.getPlayer();
-        if (config.getBoolean("announcePlugin")) {
+        if (config.getBoolean("Announce Plugin")) {
             player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
-        } else if (Objects.requireNonNull(config.getString("announcePlugin")).equalsIgnoreCase("op") && player.isOp()) {
+        } else if (Objects.requireNonNull(config.getString("Announce Plugin")).equalsIgnoreCase("op") && player.isOp()) {
             player.sendMessage("Running OPAskBan v" + this.getDescription().getVersion());
         }
         if (updateAvailable && player.isOp()) {
