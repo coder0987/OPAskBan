@@ -11,6 +11,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.BanList;
 
+import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -24,6 +26,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
     public void onEnable() {
         //These add values to the config file
         config.addDefault("announcePlugin",true);//Whether the plugin will send a message to players on join
+        config.addDefault("Ignored Characters", ""); //Sets what characters should be ignored by the plugin
         config.addDefault("Separate the values by", ",");//What char to separate the next config's messages by
         config.addDefault("bannableMessages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
         config.addDefault("deleteBannableMessages", false);//Whether the plugin should delete messages defined in the config above
@@ -52,6 +55,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
                 getLogger().info("You are running the latest version.");
             }
         });
+        getLogger().warning("Config \"Ignored Characters\" does not ignore characters in the config,\n just characters in player-sent messages\n Certain characters are automatically filtered from messages: !#");
     }
 
     //This runs whenever a player sends a message
@@ -59,6 +63,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
     public void onChat(AsyncPlayerChatEvent event){
         //Grabs the player and initializes certain variables
         final Player player =  event.getPlayer();
+        String message = event.getMessage();
         String banMessages = config.getString("bannableMessages");
         if (banMessages == null) {
             banMessages = "can i have op?";
@@ -67,6 +72,20 @@ public class OPAskBan extends JavaPlugin implements Listener {
         String[] opAsk = new String[StringUtils.countMatches(banMessages, String.valueOf(divider)) + 1];
         int splitPoint;
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
+
+        message = removeChar(message, '!');
+        message = removeChar(message, '#');
+        if (Objects.requireNonNull(config.getString("Ignored Characters")).length() != 0) {
+            char[] ignoredCharacters = new char[Objects.requireNonNull(config.getString("Ignored Characters")).length()];
+
+            for (int i = 0; i < Objects.requireNonNull(config.getString("Ignored Characters")).length(); i++) {
+                ignoredCharacters[i] = Objects.requireNonNull(config.getString("Ignored Characters")).charAt(i);
+            }
+
+            for (char ignoredCharacter : ignoredCharacters) {
+                message = removeChar(message, ignoredCharacter);
+            }
+        }
 
         //Splits the config text into an array of Strings
         for (int i = 0; i < commaCount + 2; i++) {
@@ -83,7 +102,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         //Checks the message sent by the player against the array of Strings
         boolean isAskingForOp = false;
         for (String s : opAsk) {
-            if (event.getMessage().equalsIgnoreCase(s)) {
+            if (message.equalsIgnoreCase(s)) {
                 isAskingForOp = true;
                 break;
             }
@@ -132,4 +151,24 @@ public class OPAskBan extends JavaPlugin implements Listener {
     public void onDisable(){
 
     }
+
+    public String removeChar(@Nonnull String chop, char charToRemove){
+        String chopped;
+        int indexOf = chop.indexOf(charToRemove);
+        if (indexOf != -1){
+            chopped = chop.substring(0, indexOf);
+            chopped += chop.substring(indexOf + 1);
+            chop = chop.substring(indexOf + 1);
+            while (chopped.indexOf(charToRemove) != -1){
+                indexOf = chop.indexOf(charToRemove);
+                chopped = chop.substring(0, indexOf);
+                chopped += chop.substring(indexOf + 1);
+                chop = chop.substring(indexOf + 1);
+            }
+        } else {
+            return chop;
+        }
+        return chopped;
+    }
+
 }
