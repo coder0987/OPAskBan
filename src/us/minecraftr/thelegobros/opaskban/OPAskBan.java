@@ -26,11 +26,11 @@ public class OPAskBan extends JavaPlugin implements Listener {
         //These add values to the config file
         config.addDefault("Announce Plugin",true);//Whether the plugin will send a message to players on join
         config.addDefault("Ignored Characters", ""); //Sets what characters should be ignored by the plugin
-        config.addDefault("Separate the values by", ",");//What char to separate the next config's messages by
+        config.addDefault("Separate The Values By", ",");//What char to separate the next config's messages by
         config.addDefault("Bannable Messages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
         config.addDefault("Delete Bannable Messages", false);//Whether the plugin should delete messages defined in the config above
         config.addDefault("Log Deleted Messages", true);//Whether the plugin should log deleted messages to the console
-        config.addDefault("OP asked", "Why are you asking for OP???");//What message should be sent to operators that send a bannableMessage
+        config.addDefault("OP Asked", "Why are you asking for OP???");//What message should be sent to operators that send a bannableMessage
         config.addDefault("Ban Time", 3600000);//How long the ban will last, in milliseconds
         config.addDefault("Ban Message", "Be patient. You have been banned for one hour.");//What message the player will be sent when attempting to rejoin the world
         config.addDefault("Kick Message", "Don't beg. You have been banned for one hour.");//What message the player will be sent when initially ejected from the world
