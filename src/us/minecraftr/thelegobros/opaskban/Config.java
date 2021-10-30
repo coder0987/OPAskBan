@@ -28,12 +28,16 @@ public class Config implements TabExecutor {
         FileConfiguration config = plugin.getConfig();
         StringBuilder newMessage = new StringBuilder(Objects.requireNonNull(config.getString("Bannable Messages")));
         if (args.length == 0) {
+            //Returns false if the command was executed without arguments
             return false;
         } else if (args[0].equals("get")){
+            //Returns the Bannable Messages config if the /config get command was executed
             sender.sendMessage(Objects.requireNonNull(config.getString("Bannable Messages")));
         } else if (args.length == 1) {
+            //Returns false if /config set|add|remove was sent without a message to set add or remove
             return false;
         } else if (args[0].equals("add")) {
+            //Concatenates the message onto the config and sets the config to it
             if (!(String.valueOf(newMessage).equals(" ")) || !(newMessage.isEmpty()) || !(String.valueOf(newMessage).equals(""))) {
                 newMessage.append(", ");
             }
@@ -44,6 +48,7 @@ public class Config implements TabExecutor {
             config.set("Bannable Messages", newMessage.toString());
             sender.sendMessage("Bannable Messages set to " + newMessage);
         } else if (args[0].equals("overwrite")||args[0].equals("set")) {
+            //Sets the bannable messages to whatever came after set
             newMessage = new StringBuilder(args[1] + " ");
             for (int i = 2; i < args.length; i++) {
                 newMessage.append(args[i]).append(" ");
@@ -52,6 +57,7 @@ public class Config implements TabExecutor {
             config.set("Bannable Messages", newMessage.toString());
             sender.sendMessage("Bannable Messages set to " + newMessage);
         } else if (args[0].equals("remove")) {
+            //Removes the specified message from the config
             String banMessages = config.getString("Bannable Messages");
             assert banMessages != null;
             newMessage = new StringBuilder(args[1] + " ");
@@ -59,6 +65,7 @@ public class Config implements TabExecutor {
                 newMessage.append(args[i]).append(" ");
             }
             newMessage = new StringBuilder(newMessage.substring(0, newMessage.length() - 1));
+            //Prevents the plugin from removing the last item from the config, as well as removes the commas and spaces
             if (banMessages.contains(", " + newMessage)) {
                 newMessage = new StringBuilder(", " + newMessage);
             } else if (banMessages.contains(newMessage + ", ")) {
@@ -72,6 +79,7 @@ public class Config implements TabExecutor {
             config.set("Bannable Messages", newMessage.toString());
             sender.sendMessage("Bannable Messages set to " + newMessage);
         } else {
+            //Returns false if a command other than /config get|set|add|remove was sent
             return false;
         }
 
@@ -80,6 +88,7 @@ public class Config implements TabExecutor {
         return true;
     }
 
+    //This adds a tab-able list to the command
     @Override
     public List<String> onTabComplete(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String alias, @Nonnull String[] args) {
         if (args.length == 1){
@@ -94,6 +103,7 @@ public class Config implements TabExecutor {
             arguments.add("Message");
             return arguments;
         } else {
+            //Removes all autofill from the tab list
             return new ArrayList<>();
         }
     }

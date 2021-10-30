@@ -43,6 +43,7 @@ public class Status implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String alias, @Nonnull String[] args) {
+        //Removes all autofill from the tab list
         return new ArrayList<>();
     }
 }

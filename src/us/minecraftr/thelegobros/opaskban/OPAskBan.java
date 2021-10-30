@@ -73,6 +73,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         int splitPoint;
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
 
+        //This code removes characters from player-sent messages
         message = removeChar(message, '!');
         message = removeChar(message, '#');
         if (Objects.requireNonNull(config.getString("Ignored Characters")).length() != 0) {
@@ -156,6 +157,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
 
     }
 
+    //This method removes every instance of a specified character from a string
     public String removeChar(@Nonnull String chop, char charToRemove){
         String chopped;
         int indexOf = chop.indexOf(charToRemove);
