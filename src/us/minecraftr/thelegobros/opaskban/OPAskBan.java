@@ -26,7 +26,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         //These add values to the config file
         config.addDefault("Announce Plugin",true);//Whether the plugin will send a message to players on join
         config.addDefault("Ignored Characters", ""); //Sets what characters should be ignored by the plugin
-        config.addDefault("Ignore Non-Alphabetic Characters", "false");
+        config.addDefault("Ignore Non-Alphabetic Characters", true);
         config.addDefault("Separate The Values By", ",");//What char to separate the next config's messages by
         config.addDefault("Bannable Messages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
         config.addDefault("Delete Bannable Messages", false);//Whether the plugin should delete messages defined in the config above
@@ -70,13 +70,14 @@ public class OPAskBan extends JavaPlugin implements Listener {
             banMessages = "can i have op?";
         }
         char divider = Objects.requireNonNull(config.get("Separate The Values By")).toString().charAt(0);
-        String[] opAsk = new String[StringUtils.countMatches(banMessages, String.valueOf(divider)) + 1];
-        int splitPoint;
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
+        String[] opAsk = new String[commaCount + 1];
+        int splitPoint;
+        char[] ignoredCharacters = new char[0];
 
         //This code removes characters from player-sent messages
         if (Objects.requireNonNull(config.getString("Ignored Characters")).length() != 0) {
-            char[] ignoredCharacters = new char[Objects.requireNonNull(config.getString("Ignored Characters")).length()];
+            ignoredCharacters = new char[Objects.requireNonNull(config.getString("Ignored Characters")).length()];
 
             for (int i = 0; i < Objects.requireNonNull(config.getString("Ignored Characters")).length(); i++) {
                 ignoredCharacters[i] = Objects.requireNonNull(config.getString("Ignored Characters")).charAt(i);
@@ -87,6 +88,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
             }
         }
         if (config.getBoolean("Ignore Non-Alphabetic Characters")){
+            player.sendMessage("Ignoring non-alphabetic characters");
             message = removeNonAlphabetic(message);
         }
 
@@ -99,6 +101,20 @@ public class OPAskBan extends JavaPlugin implements Listener {
             } else {
                 opAsk[opAsk.length - 1] = banMessages;
                 break;
+            }
+        }
+
+        //Remove illegal characters from Bannable Messages
+        if (config.getBoolean("Ignore Non-Alphabetic Characters")){
+            for (int i = 0; i < opAsk.length; i++){
+                opAsk[i] = removeNonAlphabetic(opAsk[i]);
+            }
+        }
+        if (Objects.requireNonNull(config.getString("Ignored Characters")).length() != 0) {
+            for (int i = 0; i < opAsk.length; i++) {
+                for (char ignoredCharacter : ignoredCharacters) {
+                    opAsk[i] = removeChar(opAsk[i], ignoredCharacter);
+                }
             }
         }
 

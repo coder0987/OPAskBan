@@ -10,11 +10,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="comments">
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="0.3.7: remove non-alphabetic characters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OPAskBan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OPAskBan.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/UpdateChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/UpdateChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/OPAskBan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/OPAskBan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/UpdateChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/UpdateChecker.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635569458937</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="0.3.7: remove non-alphabetic characters">
+      <created>1636673243208</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1636673243208</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -300,6 +310,7 @@
     <MESSAGE value="v0.3.5" />
     <MESSAGE value="v0.3.6" />
     <MESSAGE value="comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments" />
+    <MESSAGE value="0.3.7: remove non-alphabetic characters" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.3.7: remove non-alphabetic characters" />
   </component>
 </project>
