@@ -10,13 +10,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="v0.3.6">
+    <list default="true" id="da75d847-86c4-4003-99fa-f1a738a692d4" name="Changes" comment="comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OPAskBan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OPAskBan.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/OPAskBan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/minecraftr/thelegobros/opaskban/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/UpdateChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/us/minecraftr/thelegobros/opaskban/UpdateChecker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635477906725</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="comments">
+      <created>1635569458937</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1635569458937</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,6 +299,7 @@
     <MESSAGE value="v0.3.4" />
     <MESSAGE value="v0.3.5" />
     <MESSAGE value="v0.3.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.3.6" />
+    <MESSAGE value="comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments" />
   </component>
 </project>

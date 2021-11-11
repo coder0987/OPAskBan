@@ -20,6 +20,7 @@ public class UpdateChecker {
         this.resourceId = resourceId;
     }
 
+    //I literally just copied this code from the Spigot wiki
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
@@ -27,6 +28,7 @@ public class UpdateChecker {
                     consumer.accept(scanner.next());
                 }
             } catch (IOException exception) {
+                //No internet = cannot fetch update
                 plugin.getLogger().info("Unable to check for updates: " + exception.getMessage());
             }
         });

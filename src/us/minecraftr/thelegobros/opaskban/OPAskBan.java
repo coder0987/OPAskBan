@@ -26,6 +26,7 @@ public class OPAskBan extends JavaPlugin implements Listener {
         //These add values to the config file
         config.addDefault("Announce Plugin",true);//Whether the plugin will send a message to players on join
         config.addDefault("Ignored Characters", ""); //Sets what characters should be ignored by the plugin
+        config.addDefault("Ignore Non-Alphabetic Characters", "false");
         config.addDefault("Separate The Values By", ",");//What char to separate the next config's messages by
         config.addDefault("Bannable Messages", "can i have op?");//Messages that, when sent by the player, will cause the player to be banned
         config.addDefault("Delete Bannable Messages", false);//Whether the plugin should delete messages defined in the config above
@@ -74,8 +75,6 @@ public class OPAskBan extends JavaPlugin implements Listener {
         int commaCount = StringUtils.countMatches(banMessages, String.valueOf(divider));
 
         //This code removes characters from player-sent messages
-        message = removeChar(message, '!');
-        message = removeChar(message, '#');
         if (Objects.requireNonNull(config.getString("Ignored Characters")).length() != 0) {
             char[] ignoredCharacters = new char[Objects.requireNonNull(config.getString("Ignored Characters")).length()];
 
@@ -86,6 +85,9 @@ public class OPAskBan extends JavaPlugin implements Listener {
             for (char ignoredCharacter : ignoredCharacters) {
                 message = removeChar(message, ignoredCharacter);
             }
+        }
+        if (config.getBoolean("Ignore Non-Alphabetic Characters")){
+            message = removeNonAlphabetic(message);
         }
 
         //Splits the config text into an array of Strings
@@ -175,6 +177,16 @@ public class OPAskBan extends JavaPlugin implements Listener {
             return chop;
         }
         return chopped;
+    }
+    public String removeNonAlphabetic(@Nonnull String chop) {
+        StringBuilder chopped = new StringBuilder();
+        for (int i = 0; i < chop.length(); i++) {
+            char mightChop = chop.charAt(i);
+            if (mightChop==32||(mightChop<=122&&mightChop>=97)||(mightChop<=90&&mightChop>=65)){
+                chopped.append(mightChop);
+            }
+        }
+        return String.valueOf(chopped);
     }
 
 }
