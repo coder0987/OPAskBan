@@ -53,7 +53,6 @@ public class OPAskBan extends JavaPlugin implements Listener {
                 getLogger().info("You are running the latest version.");
             }
         });
-        getLogger().warning("Config \"Ignored Characters\" does not ignore characters in the config,\n just characters in player-sent messages\n Certain characters are automatically filtered from messages: !#");
     }
 
     //This runs whenever a player sends a message
