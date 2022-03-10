@@ -1,8 +1,8 @@
 name: OPAskBan
-version: 0.3.8
+version: 0.3.9
 author: TheLegoBros3
 main: OPAskBan
-api-version:  1.17
+api-version:  1.16
 description: This plugin bans any player who asks for OP
 prefix: OPAskBan
 permissions:

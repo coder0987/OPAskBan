@@ -44,7 +44,10 @@ public class OPAskBan extends JavaPlugin implements Listener {
 
         //Checks online for updates
         new UpdateChecker(this, 96976).getVersion(version -> {
-            if (this.getDescription().getVersion().compareToIgnoreCase(version) < 0) {
+            version = version.substring(version.indexOf("-")+1);
+            String thisVersion = this.getDescription().getVersion();
+            thisVersion = thisVersion.substring(thisVersion.indexOf("-")+1);
+            if (thisVersion.compareToIgnoreCase(version) < 0) {
                 getLogger().warning("There is a new update available.");
                 getLogger().info("Current version: " + this.getDescription().getVersion());
                 getLogger().info("Latest available version: " + version);

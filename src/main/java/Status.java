@@ -24,7 +24,9 @@ public class Status implements TabExecutor {
             player.sendMessage( "The plugin is working" );
             new UpdateChecker(plugin, 96976).getVersion(version -> {
                 version = version.substring(version.indexOf("-")+1);
-                if (plugin.getDescription().getVersion().compareToIgnoreCase(version) < 0) {
+                String thisVersion = plugin.getDescription().getVersion();
+                thisVersion = thisVersion.substring(thisVersion.indexOf("-")+1);
+                if (thisVersion.compareToIgnoreCase(version) < 0) {
                     player.sendMessage("You are not running the latest release of this plugin :/");
                     player.sendMessage("Current version: " + plugin.getDescription().getVersion());
                     player.sendMessage("Latest available version: " + version);
